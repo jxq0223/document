@@ -1,0 +1,22 @@
+<IfModule mod_alias.c>
+    Alias /owncloud /media/owncloud/
+</IfModule>
+
+<Directory /media/owncloud/>
+    Options FollowSymlinks
+    AllowOverride all
+    Require all granted
+    php_admin_value open_basedir "/srv/http/:/home/:/tmp/:/usr/share/pear/:/usr/share/webapps/owncloud/:/etc/webapps/owncloud:/media/"
+</Directory>
+
+<VirtualHost *:80>
+    ServerAdmin foo@foofarm.com
+    DocumentRoot /media/owncloud
+    ServerName owncloud.foo.com
+    ErrorLog /var/log/httpd/owncloud.foo.info-error_log
+    CustomLog /var/log/httpd/owncloud.foo.info-access_log common
+</VirtualHost>
+~                                                                              
+~                                                                              
+~                                                                              
+"owncloud.conf" [readonly] 18L, 576C                         1,1           All
