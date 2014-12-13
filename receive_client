@@ -1,0 +1,37 @@
+import socket
+import time
+import os
+
+HOST = '183.63.113.29'
+#HOST = 'localhost'
+PORT = 5080
+#PORT = 51423
+uid = '123456'
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((HOST,PORT))
+s.sendall(uid.encode())
+#print(s)
+s.recv(1024).decode()
+print("reading:")
+
+while 1:
+    
+    data = s.recv(1024).decode()
+    print(data)
+##    cmd = input(data).strip()
+##    if len(cmd)==0:
+##        s.sendall("invalid".encode())
+##        continue
+##    s.sendall(cmd.encode())
+    #cmd = input("input a command:").strip()
+    #if len(cmd)==0: continue
+    #s.sendall(cmd.encode())
+    #data = s.recv(1024).decode()
+    #data=eval(data)
+    #print(data['1234567'])
+    ##data['1234567'].sendall('hello'.encode())
+    ##time.sleep(2)
+    #print(data)
+    
+s.close
